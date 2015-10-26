@@ -1,0 +1,17 @@
+Package: probaV
+Type: Package
+Title: Utils for time-series analysis of Proba-V data
+Version: 0.1
+Date: 2015-10-26
+Author: Johannes Eberenz
+Maintainer: <johannes.eberenz@wur.nl>
+Description: Preprocessing and data-handling.  Uses classes from
+    the raster package.
+Depends:
+    R (>= 3.0.0),
+    raster,
+    doParallel,
+    foreach,
+    rgdal
+License: MIT
+LazyData: TRUE
