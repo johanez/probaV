@@ -4,7 +4,8 @@
 \alias{mcCalc}
 \title{Multicore implementation of the raster::\code{\link{calc}} function.}
 \usage{
-mcCalc(x, minrows = 1, fun, mc.cores = 1, logfile = NULL, ...)
+mcCalc(x, minrows = 1, fun, mc.cores = 1, logfile = NULL, out_name,
+  datatype = "FLT4S", of = "ENVI", ...)
 }
 \arguments{
 \item{x}{Raster* object}
@@ -13,20 +14,30 @@ mcCalc(x, minrows = 1, fun, mc.cores = 1, logfile = NULL, ...)
 
 \item{fun}{Function to be applied to the raster object.}
 
-\item{mc.cores}{Integer Numvber of corrse, see \code{\link{mclapply}}.}
+\item{mc.cores}{Integer Numvber of cores, see \code{\link{mclapply}}. 0 will call normal \code{\link{calc}}.}
 
-\item{...}{Arguments to be passed to \code{\link{writeRaster}}.}
+\item{logfile}{Character Logfile for debugging parallel execution.}
+
+\item{out_name}{Character fielname for output brick.}
+
+\item{datatype}{Character  \code{\link{raster::dataType}} for output. Will be converted to gdal \code{ot}.}
+
+\item{...}{Arguments to be passed to \code{\link{raster::calc}}, if single core is used.}
 }
 \value{
-a Raster* object
+a Raster* object, (always written to disk in multicore case!)
 }
 \description{
-Allows functions to be applied to raster objects, with multicore support, controlling the chunksize with minrows.
+Allows functions to be applied to raster objects, with multicore support,
+controlling the chunksize with minrows. In parallel mode, intermediate blocks will always be written to disk.
+Mosaicing depends on \code{\link{gdalUtils::mosaic_rasters}}
 }
 \details{
 For further help, see \code{\link{calc}}. Warnings of the parallel package (see \code{\link{mclapply}} for instance) apply to this function.
 }
 \author{
+Loic Dutrieux, adaption by Johannes Eberenz
+
 Johannes Eberenz, adapted from Loic Dutrieux
 }
 \seealso{
