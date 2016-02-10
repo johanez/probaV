@@ -27,10 +27,10 @@ a ts, numeric vector or data.frame, see \link[=dest]{details}
 Temporal outliers are marked or removed based on their distanced from a smoothing model derived with \code{\link{loess}}.
 }
 \details{
-"distance" gives the distance, "sd_distance" the distance devided by the sd,  
-"filled", a ts with outleirs replaced by smoothed values, "omit" the input ts 
-with outliers removed,  
-"QC" the status of observations: 0=Missing/band input QC, 1=good, 2=temporal outlier. 
+"distance" gives the distance, "sd_distance" the distance devided by the sd,
+"filled", a ts with outleirs replaced by smoothed values, "omit" the input ts
+with outliers removed,
+"QC" the status of observations: 0=Missing/band input QC, 1=good, 2=temporal outlier.
 "all" returns a data.frame with all these vectors.
 }
 

@@ -17,13 +17,22 @@
 #'
 #' @return Numeric vector of the models coefficients and percentiles (length depending on arguments)
 #'
-#' @import robustbase
-#' @import lubridate
+#' @importFrom robustbase lmrob
+#' @importFrom lubridate decimal_date
 #'
 #' @export
 #'
 
 getHarmMetrics <- function(x, dates=NULL, QC_good=NULL, sig=0.95, n_years=NA, lin_trend=T, order=c(1,2,3), robust=F, return_model=F, probs = c(0.01, 0.99), ...){
+
+  # helper to eg p values from model objects
+  lmp <- function (modelobject) {
+    if (!inherits(modelobject, "lm")) stop("Not an object of class 'lm' ")
+    f <- summary(modelobject)$fstatistic
+    p <- unname(pf(f[1],f[2],f[3],lower.tail=F))
+    attributes(p) <- NULL
+    return(p)
+  }
 
   if(is.null(dates)){
     if (inherits(x, c("ts", "zoo"))){
@@ -88,14 +97,4 @@ getHarmMetrics <- function(x, dates=NULL, QC_good=NULL, sig=0.95, n_years=NA, li
   names(metrics) <- c("min", "max", "intercept", names(lmh$coefficients)[-1])
   return(metrics)
 }
-
-
-lmp <- function (modelobject) {
-  if (!inherits(modelobject, "lm")) stop("Not an object of class 'lm' ")
-  f <- summary(modelobject)$fstatistic
-  p <- unname(pf(f[1],f[2],f[3],lower.tail=F))
-  attributes(p) <- NULL
-  return(p)
-}
-
 

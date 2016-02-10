@@ -2,37 +2,31 @@
 % Please edit documentation in R/mapDistance2Loess.R
 \name{mapDistance2Loess}
 \alias{mapDistance2Loess}
-\title{Title}
+\title{Spatial calculation of temproal outliers distance}
 \usage{
 mapDistance2Loess(x, QC_band = NULL, span = 0.3, res_type = c("distance",
   "sd_distance"), mc.cores = 1, ...)
 }
 \arguments{
-\item{x}{RasterBrick.}
+\item{x}{RasterBrick. Input ProbaV data, layer names must be Proba-V filenames!
+Multiple bands possible, stackign must be chronological.}
 
-\item{QC_band}{}
+\item{QC_band}{Integer. IWhcih band is the SM band?}
 
-\item{span}{}
+\item{span}{Numeric. See \code{\link{smoothLoess}}}
 
-\item{mc.cores}{}
+\item{res_type}{Character. "distance" or "sd_distance, see \code{\link{smoothLoess}}.}
 
-\item{...}{}
+\item{mc.cores}{Integer. See \code{\link{mcCalc}}.}
 
-\item{yday}{Numeric. See getHarmMetrics}
-
-\item{n_years}{}
-
-\item{order}{}
-
-\item{robust}{}
-
-\item{threshold}{}
+\item{...}{additional agruments to \code{\link{mcCalc}}.}
+}
+\value{
+RasterBrick with distances to loess curve per band and date.
 }
 \description{
-Title
-}
-\examples{
-
-
+Applies \code{\link{smoothLoess}} spatially using \code{\link{mcCalc}}
+to derive the distance of outliers to the \code{\link{loess}} smoothed time
+series spatially.
 }
 
