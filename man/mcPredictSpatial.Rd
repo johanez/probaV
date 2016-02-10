@@ -34,6 +34,7 @@ Other models are currently not supported!}
 RasterLayer with predictions.
 }
 \description{
-Precdict from raster Brick in parallel
+prediction from \link{\code{ranger}} model.
+Can be memory hungry! Fro big models better use fewer calc blocks and more ranger threats.
 }
 

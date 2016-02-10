@@ -1,5 +1,6 @@
 #' Precdict from raster Brick in parallel
-#'
+#' @description prediction from \link{\code{ranger}} model.
+#' Can be memory hungry! Fro big models better use fewer calc blocks and more ranger threats.
 #' @param model Object of class \code{ranger}, see \link{\code{ranger::ranger}}.
 #' Other models are currently not supported!
 #' @param b_metrics RasterBrick of covariates
@@ -66,7 +67,7 @@ mcPredictSpatial <- function(model, b_metrics, b_clumps=NULL, df_clumps=NULL, ty
     return(res)
   }
 
-  # use mcCalc ratehr than mc.calc (controll minrows)
+  # use mcCalc rather than mc.calc for large files
   out <- mcCalc(s_metrics, fun=fun, minrows = minrows, mc.cores = mc.cores, logfile=logfile, ...)
 
   return(out)
