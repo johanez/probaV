@@ -5,6 +5,7 @@
 #' using \code{\link{gdalbuildvrt}}. GDAL vrt was found to query faster
 #' than \code{raster::stack}.
 #'
+#' @author J Eberenz
 #' @param x Character. Directory of a Proba-V geotiffs or list of well formated filenames.
 #' @param patttern Character. As in \code{\link{list.files}}.
 #' @param stacked_bands Character. Which abnds are stacked (typically RADIOMETRY)

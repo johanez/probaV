@@ -42,4 +42,7 @@ If stacked bands are present, a nested vrt is build.
 
 
 }
+\author{
+J Eberenz
+}
 

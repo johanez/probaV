@@ -12,6 +12,7 @@
 #' @param ... additional agruments to \code{\link{mcCalc}}.
 #'
 #' @return RasterBrick with distances to loess curve per band and date.
+#' @export
 #' @import raster
 #'
 

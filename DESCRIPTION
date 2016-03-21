@@ -12,7 +12,11 @@ Depends:
     raster,
     doParallel,
     foreach,
-    rgdal
+    rgdal,
+    gdalUtils,
+Suggests:
+    robustbase,
+    ranger
 License: MIT
 LazyData: TRUE
 RoxygenNote: 5.0.1

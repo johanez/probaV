@@ -17,7 +17,6 @@
 #'
 #' @return Numeric vector of the models coefficients and percentiles (length depending on arguments)
 #'
-#' @importFrom robustbase lmrob
 #' @importFrom lubridate decimal_date
 #'
 #' @export
@@ -81,7 +80,12 @@ getHarmMetrics <- function(x, dates=NULL, QC_good=NULL, sig=0.95, n_years=NA, li
   }
 
   if (robust) {
-    lmh <- robustbase::lmrob(form, setting = "KS2014")
+    if (!requireNamespace("robustbase", quietly = TRUE)) {
+      stop("robustbase needed. Please install it or use robust=FALSE.",
+           call. = FALSE)
+    } else {
+      lmh <- robustbase::lmrob(form, setting = "KS2014")
+    }
   } else {
     lmh <- lm(form)
   }

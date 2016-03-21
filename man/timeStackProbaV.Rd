@@ -28,4 +28,7 @@ a RasterStack or rasterBrick.
 \description{
 Stacks Prova-V layers.
 }
+\author{
+J Eberenz
+}
 
