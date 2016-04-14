@@ -1,8 +1,8 @@
 Package: probaV
 Type: Package
 Title: Utils for time-series analysis of Proba-V data
-Version: 0.1
-Date: 2015-10-26
+Version: 0.2
+Date: 2016-04-14
 Author: Johannes Eberenz
 Maintainer: <johannes.eberenz@wur.nl>
 Description: Preprocessing and data-handling.  Uses classes from
