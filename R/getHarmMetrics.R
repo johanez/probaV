@@ -5,7 +5,7 @@
 #' @param x Numeric or ts Time series
 #' @param dates Dates oberservation times if no time series is supplied
 #' @param QC_good Integer or Logical. If supplied, values of x that are not 1 or \code{TRUE} in QC_good are omitted. Must have same length as x and dd.
-#' @param sig Numeric If not NA, coeficients with p-value > sig will be set to 0.
+#' @param sig Numeric If not NA, coeficients with p-value > sig will be set to 0. (Not reccomended!)
 #' @param n_years Integer. If not \code{NULL}, additional coeff. for n intra-yearly variation.
 #' @param lin_trend Logical. Should a linear trend be modelled?
 #' @param order Numeric. First or second order harmonics
@@ -22,7 +22,7 @@
 #' @export
 #'
 
-getHarmMetrics <- function(x, dates=NULL, QC_good=NULL, sig=0.95, n_years=NA, lin_trend=T, order=c(1,2,3), robust=F, return_model=F, probs = c(0.01, 0.99), ...){
+getHarmMetrics <- function(x, dates=NULL, QC_good=NULL, sig=NA, n_years=NA, lin_trend=T, order=c(1,2,3), robust=F, return_model=F, probs = c(0.01, 0.99), ...){
 
   # helper to eg p values from model objects
   lmp <- function (modelobject) {
