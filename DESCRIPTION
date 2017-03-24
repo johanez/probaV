@@ -14,6 +14,7 @@ Depends:
     foreach,
     rgdal,
     gdalUtils,
+    lubridate
 Suggests:
     robustbase,
     ranger
